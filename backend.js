@@ -24,13 +24,7 @@ app.post('/webhook', (req, res) => {
 	try {
 		someTimeConsumingAsyncShit()
 			.then(data => {
-				const options = {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json;charset=utf-8' },
-					body: JSON.stringify(data)
-				};
-
-				fetch(`http://localhost:${PORT}/timeConsumingShitIsDone`, options);
+				clients.forEach(client => client.res.write(`data: ${data.message} at ${new Date} \n\n`));
 			});
 
 		clients.forEach(client => client.res.write(`data: Task started at ${new Date} \n\n`));
@@ -38,16 +32,6 @@ app.post('/webhook', (req, res) => {
 	}
 	catch (error) {
 		console.log('Error in /webhook ', error);
-	}
-});
-
-
-app.post('/timeConsumingShitIsDone', async (req, res) => {
-	try {
-		clients.forEach(client => client.res.write(`data: ${req.body.message} at ${new Date} \n\n`));
-	}
-	catch (error) {
-		console.log('Error in /timeConsumingShitIsDone ', error);
 	}
 });
 
