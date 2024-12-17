@@ -20,7 +20,7 @@ const someTimeConsumingAsyncShit = async () => {
 };
 
 
-app.post('/webhook', (req, res) => {
+app.post('/sse', (req, res) => {
 	try {
 		someTimeConsumingAsyncShit()
 			.then(data => {
