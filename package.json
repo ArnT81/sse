@@ -1,7 +1,7 @@
 {
-  "name": "webhook",
+  "name": "sse",
   "version": "1.0.0",
-  "description": "",
+  "description": "server sent event",
   "main": "backend.js",
   "author": "Anders Söderberg",
   "license": "ISC",
