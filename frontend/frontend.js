@@ -18,7 +18,7 @@ const submitForm = (e) => {
 		body: json
 	};
 
-	fetch('http://localhost:4000/webhook', options)
+	fetch('http://localhost:4000/sse', options)
 		.then((response) => console.log(response))
 		.catch((error) => console.error(error))
 };
