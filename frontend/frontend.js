@@ -1,4 +1,4 @@
-const createWebhook = () => {
+const createSSEConnection = () => {
 	const eventSource = new EventSource('http://localhost:4000/events');
 
 	eventSource.onmessage = (e) => $('#messages').append(`<p>${e.data}</p>`);
@@ -25,6 +25,6 @@ const submitForm = (e) => {
 
 
 $(() => {
-	createWebhook();
+	createSSEConnection();
 	$('#form').on("submit", submitForm);
 });
